@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int carry = 1;
+        for(int i = digits.size()-1;i>=0;i--){
+            int curr = digits[i]+carry;
+            if(curr>9){
+                digits[i] = curr%10;
+                carry = curr/10;
+            }
+            else{
+                digits[i] = curr;
+                carry = 0;
+            }
+        }
+        
+        vector<int> ans;
+        if(carry == 1) ans.push_back(1);
+        for(auto it : digits) ans.push_back(it);
+        
+        return ans;
+    }
+};
