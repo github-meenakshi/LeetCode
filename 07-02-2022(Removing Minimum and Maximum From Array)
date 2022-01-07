@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int minimumDeletions(vector<int>& nums) {
+        int maxi = -100000,mini = 100000,indii1,indii2,ans = 100000;
+        for(int i = 0;i<nums.size();i++){
+            if(nums[i]>=maxi){
+                maxi = nums[i];
+                indii1 = i;
+            }
+            if(nums[i]<=mini){
+                mini = nums[i];
+                indii2 = i;
+            }
+        }
+        // int curr = (indii1+1)+(nums.size()-indii2);
+        int curr = (min(indii1,indii2)+1)+(nums.size()-max(indii1,indii2));
+        if(curr<ans) ans = curr;
+        // ans = min(ans,((indii1+1)+(nums.size()-indii2)));
+        int curr1 = nums.size()-min(indii1,indii2);
+        if(curr1<ans) ans = curr1;
+        // ans = min(ans,nums.size()-min(indii1,indii2));
+        int curr2 = max(indii1,indii2)+1;
+        if(curr2<ans) ans = curr2;
+        // ans = min(ans,max(indii1,indii2));
+        return ans;
+    }
+};
