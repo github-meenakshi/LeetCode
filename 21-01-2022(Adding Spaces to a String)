@@ -1,0 +1,13 @@
+class Solution {
+public:
+    string addSpaces(string s, vector<int>& spaces) {
+        string ans;
+        int curr = 0;
+        for(auto it : spaces){
+            ans += s.substr(curr,it-curr)+" ";
+            curr = it;
+        }
+        ans += s.substr(curr);
+        return ans;
+    }
+};
